@@ -1,0 +1,19 @@
+._r_a {
+  display: flex;
+  flex-direction: column;
+  ._r_b {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 56px) !important;
+    padding: 20px;
+  }
+  @media only screen and (max-width: 990px) {
+    ._r_b {
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+    }
+  }
+  ._r_c {
+    width: 100%;
+  }
+}

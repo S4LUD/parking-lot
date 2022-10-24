@@ -1,0 +1,41 @@
+._h_a {
+  border-bottom: 1px solid #ececec;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  ._h_f {
+    display: flex;
+    align-items: center;
+    ._h_g {
+      display: flex;
+    }
+    ._h_h {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  ._h_b {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    ._h_c {
+      cursor: pointer;
+      display: flex;
+      gap: 10px;
+      padding: 5px;
+      background: #fafafa;
+      border-radius: 5px;
+      &:hover {
+        background: #f7f7f7;
+      }
+      ._h_e {
+        font-size: 14px;
+      }
+      ._h_d {
+        display: flex;
+      }
+    }
+  }
+}

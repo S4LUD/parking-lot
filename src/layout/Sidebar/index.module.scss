@@ -1,0 +1,44 @@
+._s_a {
+  min-width: 300px;
+  max-width: 300px;
+  ._s_b {
+    padding: 10px;
+    ._s_c {
+      font-size: 16px;
+    }
+    ._s_d {
+      ._s_e {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      ._s_f {
+        ._s_h {
+          font-size: 16px;
+        }
+        ._s_i {
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+          padding: 5px 10px;
+          ._s_g {
+            font-size: 14px;
+          }
+        }
+        ._s_j {
+          font-size: 16px;
+        }
+        ._s_k {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  ._s_a {
+    max-width: none;
+  }
+}
