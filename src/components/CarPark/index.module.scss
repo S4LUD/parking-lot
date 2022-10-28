@@ -1,0 +1,95 @@
+._cp_a {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.075);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  ._cp_b {
+    box-shadow: 0 0px 10px 0 hsla(0, 0%, 0%, 0.051);
+    border: 1px solid #eeeeee;
+    background: #fff;
+    padding: 10px;
+    pointer-events: all;
+    border-radius: 5px;
+    ._cp_c {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    ._cp_d {
+      ._cp_e {
+        font-size: 14px;
+        cursor: pointer;
+        min-width: 300px;
+        border: 1px solid #ececec;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      ._cp_f {
+        height: 0px;
+        overflow: hidden;
+        margin-top: 2px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5px;
+        transition: all 250ms ease-in-out;
+        ._cp_g {
+          width: 100%;
+          cursor: pointer;
+          border: 1px solid #ececec;
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
+      ._cp_j {
+        padding: 5px 5px 0 5px;
+        height: 105px;
+      }
+    }
+    ._cp_h {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 40px;
+      ._cp_i {
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        background: #9add6d;
+        padding: 6px 8px;
+        width: 60px;
+        text-align: center;
+        &:hover {
+          background: #8ada55;
+        }
+        color: white;
+        &:first-child {
+          background: #fa7365;
+          &:hover {
+            background: rgb(255, 102, 85);
+          }
+        }
+      }
+      ._cp_l {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+._cp_k {
+  display: flex;
+}

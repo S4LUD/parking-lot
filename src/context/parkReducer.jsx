@@ -14,10 +14,7 @@ export const Reducer = (prevState, action) => {
         loading: true,
       };
     case ACTION_TYPES.FETCH_PARK:
-      return {
-        ...prevState,
-        data: action.payload,
-      };
+      return { ...prevState, loading: false };
     case ACTION_TYPES.FETCH_UNPARK:
       return {
         ...prevState,
@@ -25,7 +22,7 @@ export const Reducer = (prevState, action) => {
         data: action.payload,
       };
     case ACTION_TYPES.FETCH_NEW_ENTRY:
-      return {};
+      return { ...prevState, loading: false };
     case ACTION_TYPES.FETCH_ENTRIES:
       return {
         ...prevState,

@@ -4,7 +4,7 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import RootCSS from "./index.module.scss";
 
-export default function Root(params) {
+export default function Root() {
   return (
     <div className={RootCSS._r_a}>
       <Header />

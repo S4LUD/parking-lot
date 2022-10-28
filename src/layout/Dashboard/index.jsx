@@ -1,10 +1,13 @@
-import React, { useEffect, useContext, useLayoutEffect } from "react";
+import React, { useState, useContext, useLayoutEffect } from "react";
 import DashboardCSS from "./index.module.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/all";
 import ParkingLot from "../../components/ParkingLot";
 import parkContext from "../../context/parkContext";
+import NewEntry from "../../components/NewEntry";
+import CarPark from "../../components/CarPark";
+import { ToastContainer } from "react-toastify";
 
-export default function Dashboard(params) {
+export default function Dashboard({}) {
   const { isState, ActionType } = useContext(parkContext);
 
   useLayoutEffect(() => {
@@ -20,25 +23,53 @@ export default function Dashboard(params) {
     })();
   }, []);
 
+  const entries = isState.entries;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(1);
+  const pageNumbers = [];
+
+  const indexOfLastFloor = currentPage * postsPerPage;
+  const indexOfFirstFloor = indexOfLastFloor - postsPerPage;
+  const currentFloor = entries.slice(indexOfFirstFloor, indexOfLastFloor);
+
+  const paginate = (pageNumber) => {
+    if (pageNumber <= 0) return;
+    if (pageNumber >= pageNumbers.length + 1) return;
+    setCurrentPage(pageNumber);
+  };
+
+  for (let i = 1; i <= Math.ceil(isState.entries.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div className={DashboardCSS._d_a}>
+      <ToastContainer />
+      <CarPark />
+      <NewEntry />
       <div className={DashboardCSS._d_f}>
         <div className={DashboardCSS._d_b}>
           <div className={DashboardCSS._d_c}>Floor</div>
           <div className={DashboardCSS._d_d}>
-            <div className={DashboardCSS._d_e}>
+            <div
+              className={DashboardCSS._d_e}
+              onClick={() => paginate(currentPage - 1)}
+            >
               <AiOutlineLeft />
               <span className={DashboardCSS._d_g}>Back</span>
             </div>
-            <input type="text" placeholder="1" />
-            <div className={DashboardCSS._d_e}>
+            <input type="text" placeholder={currentPage} />
+            <div
+              className={DashboardCSS._d_e}
+              onClick={() => paginate(currentPage + 1)}
+            >
               <span className={DashboardCSS._d_g}>Next</span>
               <AiOutlineRight />
             </div>
           </div>
         </div>
       </div>
-      <ParkingLot entries={isState.entries} />
+      <ParkingLot currentFloor={currentFloor} />
     </div>
   );
 }
