@@ -51,9 +51,18 @@ export default function CarPark({}) {
 
     ActionType.FETCH_START();
     await fetch(import.meta.env.VITE_PARK_API, requestOptions)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      })
       .then((result) => ActionType.FETCH_PARK())
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        error.json().then((json) => {
+          ActionType.FETCH_PARK_ERROR(json);
+        });
+      });
   };
 
   return (

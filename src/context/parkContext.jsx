@@ -27,6 +27,16 @@ export function ParkingLotProvider({ children }) {
     });
   };
 
+  const notifyError = (comment) => {
+    toast.error(comment, {
+      position: "top-right",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      theme: "light",
+    });
+  };
+
   const updateParkingLotData = async () => {
     ActionType.FETCH_START();
     await fetch(import.meta.env.VITE_ENTRY_API, {
@@ -55,6 +65,10 @@ export function ParkingLotProvider({ children }) {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK });
         updateParkingLotData();
         notify("successful car parking");
+      },
+      FETCH_PARK_ERROR: (data) => {
+        setDispatch({ type: ACTION_TYPES.FETCH_PARK_ERROR });
+        notifyError(data.message);
       },
     }),
     []

@@ -33,7 +33,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-evenly;
-      height: 40px;
+      min-height: 40px;
+      max-height: 40px;
       ._ne_e {
         width: 60px;
         cursor: pointer;

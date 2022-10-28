@@ -59,7 +59,8 @@
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-      height: 40px;
+      min-height: 40px;
+      max-height: 40px;
       ._cp_i {
         cursor: pointer;
         border-radius: 5px;

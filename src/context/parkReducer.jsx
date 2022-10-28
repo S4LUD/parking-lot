@@ -13,6 +13,8 @@ export const Reducer = (prevState, action) => {
         ...prevState,
         loading: true,
       };
+    case ACTION_TYPES.FETCH_PARK_ERROR:
+      return { ...prevState, loading: false };
     case ACTION_TYPES.FETCH_PARK:
       return { ...prevState, loading: false };
     case ACTION_TYPES.FETCH_UNPARK:
