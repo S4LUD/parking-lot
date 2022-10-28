@@ -5,7 +5,7 @@
   margin-bottom: 10px;
   user-select: none;
   ._d_k {
-    margin-left: 10px;
+    margin: 0 10px 0 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -24,7 +24,6 @@
     }
   }
   ._d_i {
-    margin-right: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
