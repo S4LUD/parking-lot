@@ -19,7 +19,7 @@ export function ParkingLotProvider({ children }) {
 
   const notify = (comment) => {
     toast.success(comment, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -29,7 +29,7 @@ export function ParkingLotProvider({ children }) {
 
   const notifyError = (comment) => {
     toast.error(comment, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
