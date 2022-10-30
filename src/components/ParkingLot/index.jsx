@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import DashboardCSS from "./index.module.scss";
 import {
   BlackOut,
@@ -8,8 +8,10 @@ import {
   RedStrip,
   WhiteStrip,
 } from "../../assets/image/cars";
+import parkContext from "../../context/parkContext";
 
 export default function ParkingLot({ currentFloor }) {
+  const { ToggleFee } = useContext(parkContext);
   const Cars = [
     BlackOut,
     BlueStrip,
@@ -25,7 +27,11 @@ export default function ParkingLot({ currentFloor }) {
         {currentFloor.map((item) => {
           return item.smallParkingLot.map((lot, index) => {
             return (
-              <div key={index} className={DashboardCSS._d_o_s}>
+              <div
+                key={index}
+                className={DashboardCSS._d_o_s}
+                onClick={() => ToggleFee(lot)}
+              >
                 {lot.status !== "vacant" ? (
                   <img
                     src={Cars[parseInt(lot.carName)]}
@@ -53,7 +59,11 @@ export default function ParkingLot({ currentFloor }) {
         {currentFloor.map((item) => {
           return item.mediumParkingLot.map((lot, index) => {
             return (
-              <div key={index} className={DashboardCSS._d_q_m}>
+              <div
+                key={index}
+                className={DashboardCSS._d_q_m}
+                onClick={() => ToggleFee(lot)}
+              >
                 {lot.status !== "vacant" ? (
                   <img
                     src={Cars[parseInt(lot.carName)]}
@@ -81,7 +91,11 @@ export default function ParkingLot({ currentFloor }) {
         {currentFloor.map((item) => {
           return item.largeParkingLot.map((lot, index) => {
             return (
-              <div key={index} className={DashboardCSS._d_p_l}>
+              <div
+                key={index}
+                className={DashboardCSS._d_p_l}
+                onClick={() => ToggleFee(lot)}
+              >
                 {lot.status !== "vacant" ? (
                   <img
                     src={Cars[parseInt(lot.carName)]}

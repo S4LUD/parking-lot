@@ -6,6 +6,8 @@ import parkContext from "../../context/parkContext";
 import NewEntry from "../../components/NewEntry";
 import CarPark from "../../components/CarPark";
 import { ToastContainer } from "react-toastify";
+import UnPark from "../../components/UnPark";
+import { TailSpin } from "react-loader-spinner";
 
 export default function Dashboard({}) {
   const { isState, ActionType } = useContext(parkContext);
@@ -47,29 +49,46 @@ export default function Dashboard({}) {
       <ToastContainer />
       <CarPark />
       <NewEntry />
-      <div className={DashboardCSS._d_f}>
-        <div className={DashboardCSS._d_b}>
-          <div className={DashboardCSS._d_c}>Floor</div>
-          <div className={DashboardCSS._d_d}>
-            <div
-              className={DashboardCSS._d_e}
-              onClick={() => paginate(currentPage - 1)}
-            >
-              <AiOutlineLeft />
-              <span className={DashboardCSS._d_g}>Back</span>
-            </div>
-            <input type="text" placeholder={currentPage} />
-            <div
-              className={DashboardCSS._d_e}
-              onClick={() => paginate(currentPage + 1)}
-            >
-              <span className={DashboardCSS._d_g}>Next</span>
-              <AiOutlineRight />
+      <UnPark />
+      {!isState.loading ? (
+        <>
+          <div className={DashboardCSS._d_f}>
+            <div className={DashboardCSS._d_b}>
+              <div className={DashboardCSS._d_c}>Floor</div>
+              <div className={DashboardCSS._d_d}>
+                <div
+                  className={DashboardCSS._d_e}
+                  onClick={() => paginate(currentPage - 1)}
+                >
+                  <AiOutlineLeft />
+                  <span className={DashboardCSS._d_g}>Back</span>
+                </div>
+                <input type="text" placeholder={currentPage} />
+                <div
+                  className={DashboardCSS._d_e}
+                  onClick={() => paginate(currentPage + 1)}
+                >
+                  <span className={DashboardCSS._d_g}>Next</span>
+                  <AiOutlineRight />
+                </div>
+              </div>
             </div>
           </div>
+          <ParkingLot currentFloor={currentFloor} />
+        </>
+      ) : (
+        <div className={DashboardCSS._d_h}>
+          <TailSpin
+            height="22"
+            width="22"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            visible={true}
+          />
+          Refreshing data, Please wait...
         </div>
-      </div>
-      <ParkingLot currentFloor={currentFloor} />
+      )}
     </div>
   );
 }

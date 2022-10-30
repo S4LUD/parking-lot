@@ -1,74 +1,65 @@
-._cp_a {
+._up_a {
   position: fixed;
+  pointer-events: none;
   background: rgba(0, 0, 0, 0.055);
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
+  left: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  ._cp_b {
-    box-shadow: 0 0px 10px 0 hsla(0, 0%, 0%, 0.051);
-    border: 1px solid #eeeeee;
-    background: #fff;
+  ._up_b {
+    background: white;
     pointer-events: all;
     border-radius: 5px;
-    ._cp_c {
-      padding: 10px;
+    min-width: 300px;
+    box-shadow: 0 0px 10px 0 hsla(0, 0%, 0%, 0.051);
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    ._up_c {
       font-size: 16px;
       font-weight: 500;
+      padding: 10px;
     }
-    ._cp_d {
+    ._up_d {
+      font-size: 14px;
       padding: 0 10px;
-      ._cp_e {
-        font-size: 14px;
-        cursor: pointer;
-        min-width: 300px;
-        border: 1px solid #ececec;
-        padding: 5px;
-        border-radius: 5px;
-      }
-      ._cp_f {
-        height: 0px;
-        overflow: hidden;
-        margin-top: 2px;
-        font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      ._up_e {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 5px;
-        border-radius: 5px;
-        transition: all 250ms ease-in-out;
-        ._cp_g {
-          width: 100%;
-          cursor: pointer;
-          border: 1px solid #ececec;
-          padding: 5px;
-          border-radius: 5px;
+        padding: 5px;
+        &:last-child {
+          background: #fafafa;
+        }
+        ._up_f {
+          letter-spacing: 1px;
+          text-align: right;
+          min-width: 100px;
+        }
+        ._up_g {
+          text-align: center;
         }
       }
-      ._cp_j {
-        padding: 5px 5px 0 5px;
-        height: 105px;
-      }
     }
-    ._cp_h {
+    ._up_h {
+      padding: 10px 10px 0 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-      padding: 10px 0;
-      ._cp_i {
+      ._up_i {
         min-height: 30px;
         max-height: 30px;
+        width: 60px;
         cursor: pointer;
         border-radius: 5px;
         font-size: 14px;
         background: #9add6d;
         padding: 6px 8px;
-        width: 60px;
         text-align: center;
         &:hover {
           background: #8ada55;
@@ -81,16 +72,17 @@
           }
         }
       }
-      ._cp_l {
+      ._up_j {
         display: flex;
         align-items: center;
         justify-content: center;
+        background: none;
         pointer-events: none;
       }
     }
   }
 }
 
-._cp_k {
+._up_k {
   display: flex;
 }

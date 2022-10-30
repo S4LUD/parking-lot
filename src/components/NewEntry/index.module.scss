@@ -1,6 +1,6 @@
 ._ne_a {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -33,9 +33,10 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-evenly;
+      padding: 10px 0;
       ._ne_e {
-        min-height: 40px;
-        max-height: 40px;
+        min-height: 30px;
+        max-height: 30px;
         width: 60px;
         cursor: pointer;
         border-radius: 5px;
@@ -58,7 +59,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: none;
         pointer-events: none;
       }
     }

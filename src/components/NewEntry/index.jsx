@@ -24,8 +24,26 @@ export default function NewEntry({}) {
         <div className={NewEntryCSS._ne_c}>New Entry Point</div>
         <div className={NewEntryCSS._ne_f} />
         <div className={NewEntryCSS._ne_d}>
-          <div className={NewEntryCSS._ne_e} onClick={() => setEntry(!isEntry)}>
-            Cancel
+          <div
+            className={`${NewEntryCSS._ne_e} ${
+              isState.loading && NewEntryCSS._ne_h
+            }`}
+            onClick={() => setEntry(!isEntry)}
+          >
+            {isState.loading ? (
+              <ThreeDots
+                height="32"
+                width="32"
+                radius="9"
+                color="#51ACFA"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            ) : (
+              "Cancel"
+            )}
           </div>
           <div
             className={`${NewEntryCSS._ne_e} ${

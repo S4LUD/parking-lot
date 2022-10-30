@@ -7,9 +7,10 @@
   ._d_k {
     margin: 0 10px 0 10px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     ._d_q_m {
+      cursor: pointer;
       background: rgba(82, 171, 250, 0.2);
       min-height: 60px;
       min-width: 60px;
@@ -19,15 +20,19 @@
       align-items: center;
       justify-content: center;
       ._d_v {
+        color: #919191;
         font-size: 14px;
+        transform: rotate(-55deg);
+        z-index: -1;
       }
     }
   }
   ._d_i {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     ._d_o_s {
+      cursor: pointer;
       background: rgba(154, 221, 109, 0.2);
       min-height: 60px;
       min-width: 60px;
@@ -37,15 +42,19 @@
       align-items: center;
       justify-content: center;
       ._d_r {
+        color: #919191;
         font-size: 14px;
+        transform: rotate(-55deg);
+        z-index: -1;
       }
     }
   }
   ._d_j {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     ._d_p_l {
+      cursor: pointer;
       background: rgba(250, 116, 101, 0.2);
       min-height: 60px;
       min-width: 60px;
@@ -53,7 +62,10 @@
       align-items: center;
       justify-content: center;
       ._d_u {
+        color: #919191;
         font-size: 14px;
+        transform: rotate(-55deg);
+        z-index: -1;
       }
     }
   }

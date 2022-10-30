@@ -38,7 +38,8 @@ export default function CarPark({}) {
   const CarPark = async () => {
     if (isSelect === "Select") return notify("Vehicle Type is Emtpy");
 
-    const requestOptions = {
+    ActionType.FETCH_START();
+    await fetch(import.meta.env.VITE_PARK_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -47,10 +48,7 @@ export default function CarPark({}) {
         new_status: "occupied",
       }),
       redirect: "follow",
-    };
-
-    ActionType.FETCH_START();
-    await fetch(import.meta.env.VITE_PARK_API, requestOptions)
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -68,7 +66,7 @@ export default function CarPark({}) {
   return (
     <div className={`${CarParkCSS._cp_a} ${isPark && CarParkCSS._cp_k}`}>
       <div className={CarParkCSS._cp_b} ref={UnTogglePark}>
-        <div className={CarParkCSS._cp_c}>Car Details</div>
+        <div className={CarParkCSS._cp_c}>Select Car Size</div>
         <div className={CarParkCSS._cp_d}>
           <div className={CarParkCSS._cp_e} onClick={() => setDrop(!isDrop)}>
             {isSelect}
@@ -86,8 +84,26 @@ export default function CarPark({}) {
           </div>
         </div>
         <div className={CarParkCSS._cp_h}>
-          <div className={CarParkCSS._cp_i} onClick={() => setPark(!isPark)}>
-            Cancel
+          <div
+            className={`${CarParkCSS._cp_i} ${
+              isState.loading && CarParkCSS._cp_l
+            }`}
+            onClick={() => setPark(!isPark)}
+          >
+            {isState.loading ? (
+              <ThreeDots
+                height="32"
+                width="32"
+                radius="9"
+                color="#51ACFA"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              />
+            ) : (
+              "Cancel"
+            )}
           </div>
           <div
             className={`${CarParkCSS._cp_i} ${

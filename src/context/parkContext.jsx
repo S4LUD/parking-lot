@@ -16,10 +16,12 @@ export function ParkingLotProvider({ children }) {
   const [isState, setDispatch] = useReducer(Reducer, InitialState);
   const [isEntry, setEntry] = useState(false);
   const [isPark, setPark] = useState(false);
+  const [isUnPark, setUnPark] = useState(false);
+  const [isFeeDetails, setFeeDetails] = useState([]);
 
   const notify = (comment) => {
     toast.success(comment, {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -29,7 +31,7 @@ export function ParkingLotProvider({ children }) {
 
   const notifyError = (comment) => {
     toast.error(comment, {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
@@ -64,6 +66,7 @@ export function ParkingLotProvider({ children }) {
       FETCH_PARK: (data) => {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK });
         updateParkingLotData();
+        setPark(false);
         notify("successful car parking");
       },
       FETCH_PARK_ERROR: (data) => {
@@ -114,6 +117,26 @@ export function ParkingLotProvider({ children }) {
     return parkRef;
   };
 
+  const useClickOutsideUnPark = (handler) => {
+    const unparkRef = useRef();
+
+    useEffect(() => {
+      const maybeHandler = (event) => {
+        if (!unparkRef.current.contains(event.target)) {
+          handler();
+        }
+      };
+
+      document.addEventListener("mousedown", maybeHandler);
+
+      return () => {
+        document.removeEventListener("mousedown", maybeHandler);
+      };
+    }, []);
+
+    return unparkRef;
+  };
+
   const UnToggleEntry = useClickOutside(() => {
     setEntry(false);
   });
@@ -121,6 +144,15 @@ export function ParkingLotProvider({ children }) {
   const UnTogglePark = useClickOutsidePark(() => {
     setPark(false);
   });
+
+  const UnToggleUnPark = useClickOutsideUnPark(() => {
+    setUnPark(false);
+  });
+
+  const ToggleFee = (FeeDetails) => {
+    setUnPark(!isUnPark);
+    setFeeDetails(FeeDetails);
+  };
 
   return (
     <ParkingLotContext.Provider
@@ -133,6 +165,11 @@ export function ParkingLotProvider({ children }) {
         isPark,
         setPark,
         UnTogglePark,
+        isUnPark,
+        setUnPark,
+        UnToggleUnPark,
+        ToggleFee,
+        isFeeDetails,
       }}
     >
       {children}
