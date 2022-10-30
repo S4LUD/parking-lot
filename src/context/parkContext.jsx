@@ -18,6 +18,7 @@ export function ParkingLotProvider({ children }) {
   const [isPark, setPark] = useState(false);
   const [isUnPark, setUnPark] = useState(false);
   const [isFeeDetails, setFeeDetails] = useState([]);
+  const [isGetFeeDetails, setGetFeeDetails] = useState([]);
 
   const notify = (comment) => {
     toast.success(comment, {
@@ -50,6 +51,22 @@ export function ParkingLotProvider({ children }) {
       .catch((error) => console.log("error", error));
   };
 
+  const getCarDetails = async () => {
+    ActionType.FETCH_START();
+    await fetch(import.meta.env.VITE_PARK_DETAILS_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vehicleId: isFeeDetails.vehicleId,
+        lotType: isFeeDetails.lotType,
+      }),
+      redirect: "follow",
+    })
+      .then((response) => response.json())
+      .then((result) => ActionType.FETCH_PARK_DETAILS(result))
+      .catch((error) => console.log("error", error));
+  };
+
   const ActionType = useMemo(
     () => ({
       FETCH_START: async (data) => {
@@ -57,6 +74,10 @@ export function ParkingLotProvider({ children }) {
       },
       FETCH_ENTRIES: (data) => {
         setDispatch({ type: ACTION_TYPES.FETCH_ENTRIES, payload: data });
+      },
+      FETCH_PARK_DETAILS: (data) => {
+        setDispatch({ type: ACTION_TYPES.FETCH_PARK_DETAILS });
+        setGetFeeDetails(data);
       },
       FETCH_NEW_ENTRY: (data) => {
         setDispatch({ type: ACTION_TYPES.FETCH_NEW_ENTRY });
@@ -67,7 +88,7 @@ export function ParkingLotProvider({ children }) {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK });
         updateParkingLotData();
         setPark(false);
-        notify("successful car parking");
+        notify("parked successfully");
       },
       FETCH_PARK_ERROR: (data) => {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK_ERROR });
@@ -170,6 +191,8 @@ export function ParkingLotProvider({ children }) {
         UnToggleUnPark,
         ToggleFee,
         isFeeDetails,
+        isGetFeeDetails,
+        getCarDetails,
       }}
     >
       {children}

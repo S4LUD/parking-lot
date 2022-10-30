@@ -1,4 +1,4 @@
-import React, { useState, useContext, useLayoutEffect } from "react";
+import React, { useState, useContext, useLayoutEffect, Suspense } from "react";
 import DashboardCSS from "./index.module.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/all";
 import ParkingLot from "../../components/ParkingLot";
@@ -50,7 +50,7 @@ export default function Dashboard({}) {
       <CarPark />
       <NewEntry />
       <UnPark />
-      {!isState.loading ? (
+      {/* {!isState.loading ? (
         <>
           <div className={DashboardCSS._d_f}>
             <div className={DashboardCSS._d_b}>
@@ -88,7 +88,48 @@ export default function Dashboard({}) {
           />
           Refreshing data, Please wait...
         </div>
-      )}
+      )} */}
+      <Suspense
+        fallback={
+          <div className={DashboardCSS._d_h}>
+            <TailSpin
+              height="22"
+              width="22"
+              color="#4fa94d"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              visible={true}
+            />
+            Refreshing data, Please wait...
+          </div>
+        }
+      >
+        <>
+          <div className={DashboardCSS._d_f}>
+            <div className={DashboardCSS._d_b}>
+              <div className={DashboardCSS._d_c}>Floor</div>
+              <div className={DashboardCSS._d_d}>
+                <div
+                  className={DashboardCSS._d_e}
+                  onClick={() => paginate(currentPage - 1)}
+                >
+                  <AiOutlineLeft />
+                  <span className={DashboardCSS._d_g}>Back</span>
+                </div>
+                <input type="text" placeholder={currentPage} />
+                <div
+                  className={DashboardCSS._d_e}
+                  onClick={() => paginate(currentPage + 1)}
+                >
+                  <span className={DashboardCSS._d_g}>Next</span>
+                  <AiOutlineRight />
+                </div>
+              </div>
+            </div>
+          </div>
+          <ParkingLot currentFloor={currentFloor} />
+        </>
+      </Suspense>
     </div>
   );
 }

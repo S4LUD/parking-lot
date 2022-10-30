@@ -31,17 +31,10 @@
       ._up_e {
         display: flex;
         gap: 5px;
-        padding: 5px;
-        &:last-child {
-          background: #fafafa;
-        }
         ._up_f {
+          min-width: 115px;
           letter-spacing: 1px;
           text-align: right;
-          min-width: 100px;
-        }
-        ._up_g {
-          text-align: center;
         }
       }
     }
