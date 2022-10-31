@@ -95,7 +95,7 @@ export default function CarPark({}) {
                 height="32"
                 width="32"
                 radius="9"
-                color="#51ACFA"
+                color="#000000"
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
                 wrapperClassName=""
@@ -116,7 +116,7 @@ export default function CarPark({}) {
                 height="32"
                 width="32"
                 radius="9"
-                color="#51ACFA"
+                color="#000000"
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
                 wrapperClassName=""
