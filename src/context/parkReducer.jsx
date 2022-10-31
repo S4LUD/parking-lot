@@ -27,6 +27,8 @@ export const Reducer = (prevState, action) => {
         entries: action.payload,
         loading: false,
       };
+    case ACTION_TYPES.FETCH_UNPARK: //FETCH_PARK_DETAILS
+      return { ...prevState, loading: false };
     default:
       return prevState;
   }

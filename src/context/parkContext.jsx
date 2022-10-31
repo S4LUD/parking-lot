@@ -69,7 +69,7 @@ export function ParkingLotProvider({ children }) {
 
   const ActionType = useMemo(
     () => ({
-      FETCH_START: async (data) => {
+      FETCH_START: async () => {
         setDispatch({ type: ACTION_TYPES.FETCH_START });
       },
       FETCH_ENTRIES: (data) => {
@@ -79,20 +79,26 @@ export function ParkingLotProvider({ children }) {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK_DETAILS });
         setGetFeeDetails(data);
       },
-      FETCH_NEW_ENTRY: (data) => {
+      FETCH_NEW_ENTRY: () => {
         setDispatch({ type: ACTION_TYPES.FETCH_NEW_ENTRY });
         updateParkingLotData();
         setEntry(false);
       },
-      FETCH_PARK: (data) => {
+      FETCH_PARK: () => {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK });
         updateParkingLotData();
-        setPark(false);
         notify("parked successfully");
+        setPark(false);
       },
       FETCH_PARK_ERROR: (data) => {
         setDispatch({ type: ACTION_TYPES.FETCH_PARK_ERROR });
         notifyError(data.message);
+      },
+      FETCH_UNPARK: () => {
+        setDispatch({ type: ACTION_TYPES.FETCH_UNPARK });
+        updateParkingLotData();
+        notify("unparked successfully");
+        setUnPark(false);
       },
     }),
     []

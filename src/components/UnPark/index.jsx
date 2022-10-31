@@ -12,7 +12,23 @@ export default function UnPark() {
     isFeeDetails,
     isGetFeeDetails,
     getCarDetails,
+    ActionType,
   } = useContext(parkContext);
+
+  const unpark = async (id) => {
+    ActionType.FETCH_START();
+    await fetch(import.meta.env.VITE_UNPARK_API, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        _id: id,
+      }),
+      redirect: "follow",
+    })
+      .then((response) => response.json())
+      .then((result) => ActionType.FETCH_UNPARK())
+      .catch((error) => console.log("error", error));
+  };
 
   return (
     <div className={`${UnParkCSS._up_a} ${isUnPark && UnParkCSS._up_k}`}>
@@ -32,7 +48,7 @@ export default function UnPark() {
                 <div className={UnParkCSS._up_g}>{isFeeDetails.lotType}</div>
               </div>
               <div className={UnParkCSS._up_e}>
-                <div className={UnParkCSS._up_f}>Lot type:</div>
+                <div className={UnParkCSS._up_f}>Vehicle type:</div>
                 <div className={UnParkCSS._up_g}>
                   {isFeeDetails.vehicleType}
                 </div>
@@ -87,22 +103,38 @@ export default function UnPark() {
             {isGetFeeDetails.length !== 0 ? (
               <div className={UnParkCSS._up_h}>
                 <div
-                  className={UnParkCSS._up_i}
-                  onClick={() => setUnPark(!isUnPark)}
-                >
-                  Cancel
-                </div>
-                <div
                   className={`${UnParkCSS._up_i} ${
                     isState.loading && UnParkCSS._up_j
                   }`}
+                  onClick={() => setUnPark(!isUnPark)}
                 >
                   {isState.loading ? (
                     <ThreeDots
                       height="32"
                       width="32"
                       radius="9"
-                      color="#51ACFA"
+                      color="#000000"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClassName=""
+                      visible={true}
+                    />
+                  ) : (
+                    "Cancel"
+                  )}
+                </div>
+                <div
+                  className={`${UnParkCSS._up_i} ${
+                    isState.loading && UnParkCSS._up_j
+                  }`}
+                  onClick={() => unpark(isFeeDetails.vehicleId)}
+                >
+                  {isState.loading ? (
+                    <ThreeDots
+                      height="32"
+                      width="32"
+                      radius="9"
+                      color="#000000"
                       ariaLabel="three-dots-loading"
                       wrapperStyle={{}}
                       wrapperClassName=""
