@@ -73,6 +73,26 @@
         pointer-events: none;
       }
     }
+    ._up_l {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      ._up_m {
+        color: white;
+        min-height: 30px;
+        max-height: 30px;
+        width: 70px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        background: #9add6d;
+        padding: 6px 8px;
+        text-align: center;
+        &:hover {
+          background: #8ada55;
+        }
+      }
+    }
   }
 }
 

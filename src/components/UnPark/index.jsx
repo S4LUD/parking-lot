@@ -17,9 +17,7 @@ export default function UnPark() {
   return (
     <div className={`${UnParkCSS._up_a} ${isUnPark && UnParkCSS._up_k}`}>
       <div className={UnParkCSS._up_b} ref={UnToggleUnPark}>
-        <div className={UnParkCSS._up_c} onClick={() => getCarDetails()}>
-          Un Park a car
-        </div>
+        <div className={UnParkCSS._up_c}>Un Park a car</div>
         <div className={UnParkCSS._up_d}>
           <div className={UnParkCSS._up_e}>
             <div className={UnParkCSS._up_f}>Ref No.:</div>
@@ -33,7 +31,7 @@ export default function UnPark() {
             <div className={UnParkCSS._up_f}>Lot type:</div>
             <div className={UnParkCSS._up_g}>{isFeeDetails.vehicleType}</div>
           </div>
-          {isGetFeeDetails.length !== 0 ? (
+          {isGetFeeDetails.length !== 0 && (
             <>
               <div className={UnParkCSS._up_e}>
                 <div className={UnParkCSS._up_f}>TimeIn:</div>
@@ -74,33 +72,42 @@ export default function UnPark() {
                 </div>
               </div>
             </>
-          ) : null}
+          )}
         </div>
-        <div className={UnParkCSS._up_h}>
-          <div className={UnParkCSS._up_i} onClick={() => setUnPark(!isUnPark)}>
-            Cancel
+        {isGetFeeDetails.length !== 0 ? (
+          <div className={UnParkCSS._up_h}>
+            <div
+              className={UnParkCSS._up_i}
+              onClick={() => setUnPark(!isUnPark)}
+            >
+              Cancel
+            </div>
+            <div
+              className={`${UnParkCSS._up_i} ${
+                isState.loading && UnParkCSS._up_j
+              }`}
+            >
+              {isState.loading ? (
+                <ThreeDots
+                  height="32"
+                  width="32"
+                  radius="9"
+                  color="#51ACFA"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+              ) : (
+                "Pay"
+              )}
+            </div>
           </div>
-          <div
-            className={`${UnParkCSS._up_i} ${
-              isState.loading && UnParkCSS._up_j
-            }`}
-          >
-            {isState.loading ? (
-              <ThreeDots
-                height="32"
-                width="32"
-                radius="9"
-                color="#51ACFA"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              />
-            ) : (
-              "Pay"
-            )}
+        ) : (
+          <div className={UnParkCSS._up_l} onClick={() => getCarDetails()}>
+            <div className={UnParkCSS._up_m}>Get Fee</div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

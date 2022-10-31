@@ -171,6 +171,7 @@ export function ParkingLotProvider({ children }) {
   });
 
   const ToggleFee = (FeeDetails) => {
+    setGetFeeDetails([]);
     setUnPark(!isUnPark);
     setFeeDetails(FeeDetails);
   };
