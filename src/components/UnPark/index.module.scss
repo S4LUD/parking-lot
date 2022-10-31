@@ -92,7 +92,9 @@
         font-size: 14px;
         background: #9add6d;
         padding: 6px 8px;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &:hover {
           background: #8ada55;
         }

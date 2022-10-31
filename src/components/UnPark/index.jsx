@@ -37,52 +37,44 @@ export default function UnPark() {
                   {isFeeDetails.vehicleType}
                 </div>
               </div>
-              {isGetFeeDetails.length !== 0 && (
-                <>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>TimeIn:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.TimeIn}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>TimeOut:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.TimeOut}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>Total hours:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.totalHours}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>Flat fee:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.fixedRate}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>Exceeding Fee:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.hourlyRate}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>Full hours Fee:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.fullHoursRate}
-                    </div>
-                  </div>
-                  <div className={UnParkCSS._up_e}>
-                    <div className={UnParkCSS._up_f}>Total Fee.:</div>
-                    <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.totalFee}
-                    </div>
-                  </div>
-                </>
-              )}
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>TimeIn:</div>
+                <div className={UnParkCSS._up_g}>{isGetFeeDetails.TimeIn}</div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>TimeOut:</div>
+                <div className={UnParkCSS._up_g}>{isGetFeeDetails.TimeOut}</div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>Total hours:</div>
+                <div className={UnParkCSS._up_g}>
+                  {isGetFeeDetails.totalHours}
+                </div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>Flat fee:</div>
+                <div className={UnParkCSS._up_g}>
+                  {isGetFeeDetails.fixedRate}
+                </div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>Exceeding Fee:</div>
+                <div className={UnParkCSS._up_g}>
+                  {isGetFeeDetails.hourlyRate}
+                </div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>Full hours Fee:</div>
+                <div className={UnParkCSS._up_g}>
+                  {isGetFeeDetails.fullHoursRate}
+                </div>
+              </div>
+              <div className={UnParkCSS._up_e}>
+                <div className={UnParkCSS._up_f}>Total Fee.:</div>
+                <div className={UnParkCSS._up_g}>
+                  {isGetFeeDetails.totalFee}
+                </div>
+              </div>
             </div>
             {isGetFeeDetails.length !== 0 ? (
               <div className={UnParkCSS._up_h}>
@@ -115,7 +107,22 @@ export default function UnPark() {
               </div>
             ) : (
               <div className={UnParkCSS._up_l} onClick={() => getCarDetails()}>
-                <div className={UnParkCSS._up_m}>Get Fee</div>
+                <div className={UnParkCSS._up_m}>
+                  {isState.loading ? (
+                    <ThreeDots
+                      height="32"
+                      width="32"
+                      radius="9"
+                      color="#000000"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClassName=""
+                      visible={true}
+                    />
+                  ) : (
+                    "Get Fee"
+                  )}
+                </div>
               </div>
             )}
           </>
