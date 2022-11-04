@@ -58,13 +58,13 @@ export default function UnPark() {
                   <div className={UnParkCSS._up_e}>
                     <div className={UnParkCSS._up_f}>TimeIn:</div>
                     <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.TimeIn}
+                      {new Date(isGetFeeDetails.TimeIn).toLocaleTimeString()}
                     </div>
                   </div>
                   <div className={UnParkCSS._up_e}>
                     <div className={UnParkCSS._up_f}>TimeOut:</div>
                     <div className={UnParkCSS._up_g}>
-                      {isGetFeeDetails.TimeOut}
+                      {new Date(isGetFeeDetails.TimeOut).toLocaleTimeString()}
                     </div>
                   </div>
                   <div className={UnParkCSS._up_e}>
